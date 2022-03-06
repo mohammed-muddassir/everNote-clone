@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState,useEffect} from 'react';
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import Scratchpad from './Components/Scratchpad';
+import Main from './Components/Main';
+import Page from './editing/Page';
+// import connectToMongo from './Database/mongoConnect'
+// // import {} from '../src/.env'
+// //importing mongo connecting function 
+// import {connectToMongo} from '../src/Database/mongoConnect'
+// // import {uri} from './environment';
+// //importing connection uri
+// import { MongoClient } from 'mongodb';
+// import {MongoClient} from './Database/mongoClient'
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        
+        // const client=new MongoClient("mongodb+srv://muddassir:Whyamihere001@learn-mongo.rjp2v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+        
+        // useEffect(()=>{
+        //   connectToMongo(client);
+          
+        // },[]);
+        return (
+          <div className="App">
+            <BrowserRouter>
+              
+                  <Routes>
+                    <Route exact path="/" element={<Main/>}/>
+                    <Route path="/page/:id" element={<Page/>}/>
+                    <Route exact path="/page" element={<Page/>}/>
+
+                  </Routes>
+                
+            </BrowserRouter>
+              
+          </div>
+        );
 }
 
 export default App;
